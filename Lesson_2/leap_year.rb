@@ -5,13 +5,7 @@ month = gets.to_i
 puts "Введите год"
 year = gets.to_i
 
-if year % 400 == 0
-  feb = 29
-elsif year % 4 == 0 && year % 100 != 0
-  feb = 29
-else
-  feb = 28
-end
+feb = year % 400 == 0 || year % 4 == 0 && year % 100 != 0 ? 29 : 28
 
 return puts "Неправльный ввод данных" if month > 12 || day > 31
 
