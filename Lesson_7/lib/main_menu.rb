@@ -94,7 +94,7 @@ class MainMenu
     puts "Список станций: "
     @stations.each do |station|
       station.train_info {|train|
-        puts  "Новмер поезда: #{train.number}, тип: #{train.type}, количсетво вагонов: #{train.railway_carriages.count}"}
+        puts  "Номер поезда: #{train.number}, тип: #{train.type}, количество вагонов: #{train.railway_carriages.count}"}
     end
     trains_menu
   end
@@ -339,11 +339,7 @@ class MainMenu
   end
 
   def puts_list params
-    list = []
-    params.each do |item|
-      list << item.name
-    end
-    puts list.join(", ")
+    puts params.map(&:name).join(', ')
   end
 
   def choice_menu input, hash_menu
@@ -356,10 +352,8 @@ class MainMenu
 
   def menu_list(*options, extra_lines)
     puts "Введите:"
-    number = 1
-    options.each do |option|
-      puts "#{number} - #{option}"
-      number += 1
+    options.each.with_index(1) do |option, index|
+      puts "#{index} - #{option}"
     end
     if extra_lines
       puts "выход - для выхода из приложения"

@@ -19,7 +19,7 @@ class Station
 
   def train_info &block
     trains.each do |train|
-      block.call(train)
+      yield train
     end
   end
 

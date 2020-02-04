@@ -38,7 +38,7 @@ class Train
 
   def carriages_info &block
     railway_carriages.each.with_index(1) do |carriage, index|
-      block.call(carriage, index)
+      yield carriage, index
     end
   end
 
